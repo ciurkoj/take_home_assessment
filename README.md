@@ -14,13 +14,7 @@ Because these social networks are so webscale, they don't always respond predict
 
 Also, sometimes they will respond with an error. This error will not be valid JSON. Life's hard sometimes.
 
-The client needs to be able to run your thing, then issue the command:
-
-```
-curl localhost:3000
-```
-
-And get back a JSON response of the output from the three social networks in the format:
+The client only has access to a Mac in order to use or run your solution (which could be a script, an application, an API or a web app, they have no preference). They need to view the combined responses in the following JSON format:
 
 ```
 { twitter: [tweets], facebook: [statuses], instagram: [photos] }
