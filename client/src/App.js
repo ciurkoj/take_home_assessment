@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
 	Container,
 	AppBar,
@@ -9,11 +9,20 @@ import {
 } from "@material-ui/core";
 import Posts from "./components/Posts/Posts";
 
+import { useDispatch } from "react-redux";
+import { getPosts } from "./actions/posts";
+
 /**
  * App is the main application
  * @returns App element
  */
 const App = () => {
+	const [currentId, setCurrentId] = useState(0);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getPosts());
+	}, [currentId, dispatch]);
 	return (
 		<Container maxWidth="lg">
 			<AppBar position="static" color="inherit">
@@ -27,7 +36,7 @@ const App = () => {
 			<Grow in>
 				<Grid container justify="space-between" alignItems="stretch">
 					<Grid item>
-						<Posts />
+						<Posts setCurrentId={setCurrentId} />
 					</Grid>
 				</Grid>
 			</Grow>
