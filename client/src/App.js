@@ -10,7 +10,7 @@ import {
 import Posts from "./components/Posts/Posts";
 
 import { useDispatch } from "react-redux";
-import { getPosts } from "./actions/posts";
+import { clearPosts, getPosts } from './actions/posts';
 
 /**
  * App is the main application
@@ -19,6 +19,11 @@ import { getPosts } from "./actions/posts";
 const App = () => {
 	const [currentId, setCurrentId] = useState(0);
 	const dispatch = useDispatch();
+
+  const reload = () =>{
+    dispatch(clearPosts());
+    dispatch(getPosts());
+  }
 
 	useEffect(() => {
 		dispatch(getPosts());
@@ -31,7 +36,7 @@ const App = () => {
 				</Typography>
 			</AppBar>
 
-			<Button>Reload</Button>
+			<Button onClick={reload}>Reload</Button>
 
 			<Grow in>
 				<Grid container justify="space-between" alignItems="stretch">
@@ -43,4 +48,5 @@ const App = () => {
 		</Container>
 	);
 };
+
 export default App;
