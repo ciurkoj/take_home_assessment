@@ -1,5 +1,4 @@
 const express  = require("express");
-// import express from express;
 const cors  = require("cors");
 
 const app = express();
@@ -7,8 +6,13 @@ const app = express();
 app.use(express.json())
 app.use(cors());
 
+
+const subscribersRouter = require('./routes/posts')
+app.use('/posts', subscribersRouter)
+
 app.get('/', (req, res) => {
     res.send("hello world");
 });
 
-app.listen(4000, () => console.log('Server Started'))
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => console.log('Server Started'))
