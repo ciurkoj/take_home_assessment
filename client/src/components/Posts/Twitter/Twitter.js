@@ -1,14 +1,15 @@
 import React from "react";
 import { Card, CardContent, Typography } from "@material-ui/core/";
 
-/**
- * Post is a container for a single post
- * @returns post element
- */
-const Post = ({ post }) => {
+import useStyles from "./styles";
+
+const Twitter = ({ post}) => {
+	const classes = useStyles();
+
 	return (
-		<Card key={post.setCurrentId}>
+		<Card className={classes.card} key={post.setCurrentId}>
 			<Typography
+				className={classes.title}
 				gutterBottom
 				variant="h5"
 				component="h2"
@@ -23,4 +24,5 @@ const Post = ({ post }) => {
 		</Card>
 	);
 };
-export default Post;
+
+export default Twitter;

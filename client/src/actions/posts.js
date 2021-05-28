@@ -4,12 +4,14 @@ import * as api from "../API/index";
 
 export const getPosts = () => async (dispatch) => {
 	try {
-		const { data } = await api.fetchPost();
+		const results_twitter = await api.fetchTwitter()
+		const results_facebook = await api.fetchFacebook()
+		const results_instagram = await api.fetchInstagram()
+		const data_array= {twitter :results_twitter.data, facebook:results_facebook.data, instagram:results_instagram.data}
 
-		console.log(data);
-		console.log(await api.fetchPost());
+		console.log(data_array);
 
-		dispatch({ type: FETCH_ALL, payload: data });
+		dispatch({ type: FETCH_ALL, payload: data_array });
 	} catch (error) {
 		console.log(error.message);
 	}

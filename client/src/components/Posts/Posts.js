@@ -1,12 +1,15 @@
 import React from "react";
 import {
 	CircularProgress,
-	Container,
 	Grid,
-	Typography,Box
+	Typography,
 } from "@material-ui/core";
-import Post from "./Post/Post";
 import { useSelector } from "react-redux";
+
+import Twitter from './Twitter/Twitter';
+import Facebook from './Facebook/Facebook';
+import Instagram from './Instagram/Instagram';
+
 
 /**
  * Posts Element groups all posts.
@@ -14,10 +17,8 @@ import { useSelector } from "react-redux";
  */
 const Posts = ({ setCurrentId }) => {
 	const posts = useSelector((state) => state.posts);
-	return !posts.length ? (
-		<Container xs={12}>
-			<CircularProgress style={{ alignContent: "center" }} xs={12} />
-		</Container>
+	return !Object.keys(posts).length ? (
+		<CircularProgress />
 	) : (
 		<Grid
 			container
@@ -31,9 +32,9 @@ const Posts = ({ setCurrentId }) => {
 					Twitter
 				</Typography>
 				<Grid container spacing={3}>
-					{posts.map((post, i) => (
+					{posts.twitter.map((post, i) => (
 						<Grid key={new Date().getTime() + i} item>
-							<Post post={post} setCurrentId={setCurrentId} />
+							<Twitter post={post} setCurrentId={setCurrentId} />
 						</Grid>
 					))}
 				</Grid>
@@ -43,9 +44,9 @@ const Posts = ({ setCurrentId }) => {
 					Facebook
 				</Typography>
 				<Grid container spacing={3}>
-					{posts.map((post, i) => (
+					{posts.facebook.map((post, i) => (
 						<Grid key={new Date().getTime() + i} item>
-							<Post post={post} setCurrentId={setCurrentId} />
+							<Facebook post={post} setCurrentId={setCurrentId} />
 						</Grid>
 					))}
 				</Grid>
@@ -55,9 +56,9 @@ const Posts = ({ setCurrentId }) => {
 					Instagram
 				</Typography>
 				<Grid container spacing={3}>
-					{posts.map((post, i) => (
+					{posts.instagram.map((post, i) => (
 						<Grid key={new Date().getTime() + i} item>
-							<Post post={post} setCurrentId={setCurrentId} />
+							<Instagram post={post} setCurrentId={setCurrentId} />
 						</Grid>
 					))}
 				</Grid>
