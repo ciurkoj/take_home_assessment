@@ -1,15 +1,12 @@
 import React from "react";
-import {
-	CircularProgress,
-	Grid,
-	Typography,
-} from "@material-ui/core";
+import { CircularProgress, Grid, Typography } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
+
 import { useSelector } from "react-redux";
 
-import Twitter from './Twitter/Twitter';
-import Facebook from './Facebook/Facebook';
-import Instagram from './Instagram/Instagram';
-
+import Twitter from "./Twitter/Twitter";
+import Facebook from "./Facebook/Facebook";
+import Instagram from "./Instagram/Instagram";
 
 /**
  * Posts Element groups all posts.
@@ -32,11 +29,27 @@ const Posts = ({ setCurrentId }) => {
 					Twitter
 				</Typography>
 				<Grid container spacing={3}>
-					{posts.twitter.map((post, i) => (
-						<Grid key={new Date().getTime() + i} item>
-							<Twitter post={post} setCurrentId={setCurrentId} />
-						</Grid>
-					))}
+					{posts.twitter.map((post, i) => {
+						if (!post.error) {
+							return (
+								<Grid key={new Date().getTime() + i} item>
+									<Twitter
+										post={post}
+										setCurrentId={setCurrentId}
+									/>
+								</Grid>
+							);
+						} else {
+							return (
+								<Grid key={new Date().getTime() + i} item xs>
+									<Alert severity="warning">
+										{post.error}
+										<p>{post.message}</p>
+									</Alert>
+								</Grid>
+							);
+						}
+					})}
 				</Grid>
 			</Grid>
 			<Grid item xs={4}>
@@ -44,11 +57,27 @@ const Posts = ({ setCurrentId }) => {
 					Facebook
 				</Typography>
 				<Grid container spacing={3}>
-					{posts.facebook.map((post, i) => (
-						<Grid key={new Date().getTime() + i} item>
-							<Facebook post={post} setCurrentId={setCurrentId} />
-						</Grid>
-					))}
+					{posts.facebook.map((post, i) => {
+						if (!post.error) {
+							return (
+								<Grid key={new Date().getTime() + i} item >
+									<Facebook
+										post={post}
+										setCurrentId={setCurrentId}
+									/>
+								</Grid>
+							);
+						} else {
+							return (
+								<Grid key={new Date().getTime() + i} item xs>
+									<Alert severity="warning">
+										{post.error}
+										<p>{post.message}</p>
+									</Alert>
+								</Grid>
+							);
+						}
+					})}
 				</Grid>
 			</Grid>
 			<Grid item xs={4}>
@@ -56,11 +85,27 @@ const Posts = ({ setCurrentId }) => {
 					Instagram
 				</Typography>
 				<Grid container spacing={3}>
-					{posts.instagram.map((post, i) => (
-						<Grid key={new Date().getTime() + i} item>
-							<Instagram post={post} setCurrentId={setCurrentId} />
-						</Grid>
-					))}
+					{posts.instagram.map((post, i) => {
+						if (!post.error) {
+							return (
+								<Grid key={new Date().getTime() + i} item >
+									<Instagram
+										post={post}
+										setCurrentId={setCurrentId}
+									/>
+								</Grid>
+							);
+						} else {
+							return (
+								<Grid key={new Date().getTime() + i} item xs>
+									<Alert severity="warning"  >
+										{post.error}
+										<p>{post.message}</p>
+									</Alert>
+								</Grid>
+							);
+						}
+					})}
 				</Grid>
 			</Grid>
 		</Grid>
