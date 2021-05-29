@@ -1,5 +1,5 @@
 import React from "react";
-import { CircularProgress, Grid, Typography } from "@material-ui/core";
+import { CircularProgress, Grid, Typography,Container } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 
 import { useSelector } from "react-redux";
@@ -17,11 +17,11 @@ const Posts = ({ setCurrentId }) => {
 	return !Object.keys(posts).length ? (
 		<Grid
 			container
-			direction="row"
 			justify="center"
-			style={{ minWidth: window.innerWidth }}
+			
 		>
-			<CircularProgress xs={1} justify="center" />
+			
+			<CircularProgress xs={12} justify="center"  />
 		</Grid>
 	) : (
 		<Grid
@@ -31,6 +31,7 @@ const Posts = ({ setCurrentId }) => {
 			alignItems="flex-start"
 			spacing={2}
 		>
+		
 			<Grid item xs={4}>
 				<Typography variant="h5" align="center">
 					Twitter

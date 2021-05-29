@@ -43,8 +43,8 @@ const App = () => {
 			<Button className={classes.button} size="large" variant="contained" color="default" onClick={reload} maxWidth="lg">Reload</Button>
 
 			<Grow in>
-				<Grid container justify="space-between" alignItems="stretch">
-					<Grid item>
+				<Grid width={1} container justify="space-between" alignItems="stretch" >
+					<Grid item style={{ margin:"auto"}} >
 						<Posts setCurrentId={setCurrentId} />
 					</Grid>
 				</Grid>
