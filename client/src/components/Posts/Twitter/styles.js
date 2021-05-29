@@ -12,5 +12,6 @@ export default makeStyles({
 	},
 	title: {
 		padding: "0 16px",
+		fontSize:"14pt"
 	},
 });
