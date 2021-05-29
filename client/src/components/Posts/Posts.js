@@ -15,7 +15,14 @@ import Instagram from "./Instagram/Instagram";
 const Posts = ({ setCurrentId }) => {
 	const posts = useSelector((state) => state.posts);
 	return !Object.keys(posts).length ? (
-		<CircularProgress />
+		<Grid
+			container
+			direction="row"
+			justify="center"
+			style={{ minWidth: window.innerWidth }}
+		>
+			<CircularProgress xs={1} justify="center" />
+		</Grid>
 	) : (
 		<Grid
 			container

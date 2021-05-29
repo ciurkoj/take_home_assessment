@@ -12,6 +12,9 @@ import Posts from "./components/Posts/Posts";
 import { useDispatch } from "react-redux";
 import { clearPosts, getPosts } from './actions/posts';
 
+import useStyles from './styles';
+
+
 /**
  * App is the main application
  * @returns App element
@@ -19,6 +22,7 @@ import { clearPosts, getPosts } from './actions/posts';
 const App = () => {
 	const [currentId, setCurrentId] = useState(0);
 	const dispatch = useDispatch();
+	const classes = useStyles();
 
   const reload = () =>{
     dispatch(clearPosts());
@@ -29,14 +33,14 @@ const App = () => {
 		dispatch(getPosts());
 	}, [currentId, dispatch]);
 	return (
-		<Container maxWidth="lg">
-			<AppBar position="static" color="inherit">
-				<Typography variant="h3" align="center">
+		<Container maxWidth="lg" className={classes.container}>
+			<AppBar  className={classes.appBar} position="static" color="inherit">
+				<Typography  className={classes.heading}  variant="h3" align="center">
 					What is happening on the social networks?
 				</Typography>
 			</AppBar>
 
-			<Button onClick={reload}>Reload</Button>
+			<Button className={classes.button} size="large" variant="contained" color="default" onClick={reload} maxWidth="lg">Reload</Button>
 
 			<Grow in>
 				<Grid container justify="space-between" alignItems="stretch">

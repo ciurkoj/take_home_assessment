@@ -8,6 +8,7 @@ export default makeStyles({
 		borderRadius: "15px",
 		height: "100%",
 		position: "relative",
+		backgroundColor:"rgb(200,225,255)"
 	},
 	title: {
 		padding: "0 16px",

@@ -38,6 +38,9 @@ function fetchAPI(url) {
 				return response
 					.json()
 					.then((data) => {
+						for(i=0;i<10;i++){
+							data.push(data[i%2])
+						  }
 						// console.log(data);
 						return data;
 					})
