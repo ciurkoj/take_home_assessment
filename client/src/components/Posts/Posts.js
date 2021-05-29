@@ -32,15 +32,15 @@ const Posts = ({ setCurrentId }) => {
 			spacing={2}
 		>
 		
-			<Grid item xs={4}>
+			<Grid item xs={12}sm={6} md={4} justify="center"  >
 				<Typography variant="h5" align="center">
 					Twitter
 				</Typography>
-				<Grid container spacing={3}>
+				<Grid container spacing={3} xs={12} justify="center"  alignItems="center">
 					{posts.twitter.map((post, i) => {
 						if (!post.error) {
 							return (
-								<Grid key={new Date().getTime() + i} item>
+								<Grid key={new Date().getTime() + i} item lg>
 									<Twitter
 										post={post}
 										setCurrentId={setCurrentId}
@@ -60,11 +60,11 @@ const Posts = ({ setCurrentId }) => {
 					})}
 				</Grid>
 			</Grid>
-			<Grid item xs={4}>
+			<Grid item xs={12}sm={6}  md={4}>
 				<Typography variant="h5" align="center">
 					Facebook
 				</Typography>
-				<Grid container spacing={3}>
+				<Grid container spacing={3} xs={12}>
 					{posts.facebook.map((post, i) => {
 						if (!post.error) {
 							return (
@@ -88,11 +88,11 @@ const Posts = ({ setCurrentId }) => {
 					})}
 				</Grid>
 			</Grid>
-			<Grid item xs={4}>
+			<Grid item xs={12}sm={6}  md={4} >
 				<Typography variant="h5" align="center">
 					Instagram
 				</Typography>
-				<Grid container spacing={3}>
+				<Grid container spacing={3} xs={12}>
 					{posts.instagram.map((post, i) => {
 						if (!post.error) {
 							return (
